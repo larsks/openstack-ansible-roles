@@ -1,0 +1,5 @@
+---
+# main.yml for http_server/tasks
+- yum: name=httpd state=latest
+- service: name=httpd state=running enabled=true
+

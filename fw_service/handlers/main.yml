@@ -1,0 +1,5 @@
+---
+# main.yml for fw_service/handlers
+- name: reload firewalld
+  command: /usr/bin/firewall-cmd --reload
+

@@ -1,0 +1,16 @@
+---
+# main.yml for remotepkg/tasks
+- file: path=/var/lib/repopkg state=directory
+- get_url: >
+    url={{pkg_url}}
+    force=yes
+    dest=/var/lib/repopkg/{{pkg_name}}.rpm
+  register: repopkg
+- command: rpm -qp --qf="%{NAME}-%{VERSION}-%{RELEASE}\n" /var/lib/repopkg/{{pkg_name}}.rpm
+  register: package_nvr
+- command: rpm -q --quiet {{package_nvr.stdout}}
+  ignore_errors: true
+  register: package_exists
+- command: yum -d1 -y install /var/lib/repopkg/{{pkg_name}}.rpm
+  when: force_package_install or repopkg.changed or package_exists|failed
+

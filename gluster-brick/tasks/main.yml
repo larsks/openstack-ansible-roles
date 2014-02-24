@@ -1,0 +1,6 @@
+- command: blkid {{brick_device}}
+  ignore_errors: true
+  register: blkid
+- command: mkfs -T ext4 -L brick0 {{brick_device}}
+  when: blkid|failed
+- mount: fstype=ext4 name={{brick_mountpoint}} src={{brick_device}} state=mounted

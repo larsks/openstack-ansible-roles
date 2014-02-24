@@ -1,0 +1,11 @@
+---
+- name: create interface configuration for device {{ifcfg_device}}
+  template: src=ifcfg-dev dest=/etc/sysconfig/network-scripts/ifcfg-{{ifcfg_device}}
+            owner=root group=root mode=0644
+- command: /sbin/ifup {{ifcfg_device}}
+  when: ifcfg_state == "up"
+  ignore_errors: true
+- command: /sbin/ifdown {{ifcfg_device}}
+  when: ifcfg_state == "down"
+  ignore_errors: true
+

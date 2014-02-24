@@ -1,0 +1,7 @@
+---
+# main.yml for fw_rule/tasks
+- name: update running firewall
+  command: firewall-cmd --zone={{rule_zone}} --add-service={{rule_service}}
+- name: update persistent firewall
+  command: firewall-cmd --permanent --zone={{rule_zone}} --add-service={{rule_service}}
+

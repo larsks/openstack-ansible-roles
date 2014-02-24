@@ -1,0 +1,12 @@
+---
+# main.yml for network_controller/meta
+dependencies:
+  - role: rhifcfg
+    ifcfg_device: br-ex
+    ifcfg_type: OVSBridge
+    ifcfg_onboot: yes
+    ifcfg_bootproto: none,
+    ifcfg_ipaddr: "{{ br_ex_ipaddr }}"
+    ifcfg_netmask: "{{ br_ex_netmask }}"
+    ifcfg_state: up
+

@@ -1,0 +1,6 @@
+---
+ifcfg_state:
+ifcfg_bootproto: none
+ifcfg_onboot: 'yes'
+ifcfg_type: Ethernet
+

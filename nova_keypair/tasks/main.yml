@@ -1,0 +1,18 @@
+---
+# main.yml for nova_keypair/tasks
+# NB: This will only work correctly on Havana and greater, since earlier
+# versions of nova did not have the keypair-show command.  This will still work 
+# fine for an initial deployment, but will cause plays to fail when the keypair
+# already exists.
+- shell: >
+    . /root/keystonerc_admin;
+    nova keypair-show {{keypair_name}}
+  ignore_errors: true
+  register: keypair_check
+- copy: src={{keypair_pub_key}} dest=/root/{{keypair_name}}.pub
+  when: keypair_check|failed
+- shell: >
+    . /root/keystonerc_admin;
+    nova keypair-add --pub-key /root/{{keypair_name}}.pub {{keypair_name}}
+  when: keypair_check|failed
+

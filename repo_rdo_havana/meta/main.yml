@@ -1,0 +1,8 @@
+---
+# main.yml for repo_rdo_havana/meta
+dependencies:
+  - repo_epel
+  - role: remotepkg
+    pkg_url: http://rdo.fedorapeople.org/openstack-havana/rdo-release-havana.rpm
+    pkg_name: rdo-release
+

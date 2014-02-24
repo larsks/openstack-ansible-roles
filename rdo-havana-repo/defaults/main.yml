@@ -1,0 +1,3 @@
+---
+# main.yml for rdo-havana-repo/vars
+rdo_repo_url: http://rdo.fedorapeople.org/openstack-havana/rdo-release-havana.rpm

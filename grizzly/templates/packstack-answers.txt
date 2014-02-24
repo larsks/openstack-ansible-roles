@@ -1,0 +1,353 @@
+[general]
+
+# Set to 'y' if you would like Packstack to install Glance
+CONFIG_GLANCE_INSTALL={{CONFIG_GLANCE_INSTALL}}
+
+# Set to 'y' if you would like Packstack to install Cinder
+CONFIG_CINDER_INSTALL={{CONFIG_CINDER_INSTALL}}
+
+# Set to 'y' if you would like Packstack to install Nova
+CONFIG_NOVA_INSTALL={{CONFIG_NOVA_INSTALL}}
+
+# Set to 'y' if you would like Packstack to install Quantum
+CONFIG_QUANTUM_INSTALL={{CONFIG_QUANTUM_INSTALL}}
+
+# Set to 'y' if you would like Packstack to install Horizon
+CONFIG_HORIZON_INSTALL={{CONFIG_HORIZON_INSTALL}}
+
+# Set to 'y' if you would like Packstack to install Swift
+CONFIG_SWIFT_INSTALL={{CONFIG_SWIFT_INSTALL}}
+
+# Set to 'y' if you would like Packstack to install the OpenStack
+# Client packages. An admin "rc" file will also be installed
+CONFIG_CLIENT_INSTALL={{CONFIG_CLIENT_INSTALL}}
+
+# Comma separated list of NTP servers. Leave plain if Packstack
+# should not install ntpd on instances.
+CONFIG_NTP_SERVERS={{CONFIG_NTP_SERVERS}}
+
+# Set to 'y' if you would like Packstack to install Nagios to monitor
+# openstack hosts
+CONFIG_NAGIOS_INSTALL={{CONFIG_NAGIOS_INSTALL}}
+
+# Comma separated list of servers to be excluded from installation in
+# case you are running Packstack the second time with the same answer
+# file and don't want Packstack to touch these servers. Leave plain if
+# you don't need to exclude any server.
+EXCLUDE_SERVERS={{EXCLUDE_SERVERS}}
+
+# Path to a Public key to install on servers. If a usable key has not
+# been installed on the remote servers the user will be prompted for a
+# password and this key will be installed so the password will not be
+# required again
+CONFIG_SSH_KEY={{CONFIG_SSH_KEY}}
+
+# The IP address of the server on which to install MySQL
+CONFIG_MYSQL_HOST={{CONFIG_MYSQL_HOST}}
+
+# Username for the MySQL admin user
+CONFIG_MYSQL_USER={{CONFIG_MYSQL_USER}}
+
+# Password for the MySQL admin user
+CONFIG_MYSQL_PW={{CONFIG_MYSQL_PW}}
+
+# The IP address of the server on which to install the QPID service
+CONFIG_QPID_HOST={{CONFIG_QPID_HOST}}
+
+# The IP address of the server on which to install Keystone
+CONFIG_KEYSTONE_HOST={{CONFIG_KEYSTONE_HOST}}
+
+# The password to use for the Keystone to access DB
+CONFIG_KEYSTONE_DB_PW={{CONFIG_KEYSTONE_DB_PW}}
+
+# The token to use for the Keystone service api
+CONFIG_KEYSTONE_ADMIN_TOKEN={{CONFIG_KEYSTONE_ADMIN_TOKEN}}
+
+# The password to use for the Keystone admin user
+CONFIG_KEYSTONE_ADMIN_PW={{CONFIG_KEYSTONE_ADMIN_PW}}
+
+# The password to use for the Keystone demo user
+CONFIG_KEYSTONE_DEMO_PW={{CONFIG_KEYSTONE_DEMO_PW}}
+
+# Kestone token format. Use either UUID or PKI
+CONFIG_KEYSTONE_TOKEN_FORMAT={{CONFIG_KEYSTONE_TOKEN_FORMAT}}
+
+# The IP address of the server on which to install Glance
+CONFIG_GLANCE_HOST={{CONFIG_GLANCE_HOST}}
+
+# The password to use for the Glance to access DB
+CONFIG_GLANCE_DB_PW={{CONFIG_GLANCE_DB_PW}}
+
+# The password to use for the Glance to authenticate with Keystone
+CONFIG_GLANCE_KS_PW={{CONFIG_GLANCE_KS_PW}}
+
+# The IP address of the server on which to install Cinder
+CONFIG_CINDER_HOST={{CONFIG_CINDER_HOST}}
+
+# The password to use for the Cinder to access DB
+CONFIG_CINDER_DB_PW={{CONFIG_CINDER_DB_PW}}
+
+# The password to use for the Cinder to authenticate with Keystone
+CONFIG_CINDER_KS_PW={{CONFIG_CINDER_KS_PW}}
+
+# Create Cinder's volumes group. This should only be done for testing
+# on a proof-of-concept installation of Cinder.  This will create a
+# file-backed volume group and is not suitable for production usage.
+CONFIG_CINDER_VOLUMES_CREATE={{CONFIG_CINDER_VOLUMES_CREATE}}
+
+# Cinder's volumes group size
+CONFIG_CINDER_VOLUMES_SIZE={{CONFIG_CINDER_VOLUMES_SIZE}}
+
+# The IP address of the server on which to install the Nova API
+# service
+CONFIG_NOVA_API_HOST={{CONFIG_NOVA_API_HOST}}
+
+# The IP address of the server on which to install the Nova Cert
+# service
+CONFIG_NOVA_CERT_HOST={{CONFIG_NOVA_CERT_HOST}}
+
+# The IP address of the server on which to install the Nova VNC proxy
+CONFIG_NOVA_VNCPROXY_HOST={{CONFIG_NOVA_VNCPROXY_HOST}}
+
+# A comma separated list of IP addresses on which to install the Nova
+# Compute services
+CONFIG_NOVA_COMPUTE_HOSTS={{CONFIG_NOVA_COMPUTE_HOSTS}}
+
+# The IP address of the server on which to install the Nova Conductor
+# service
+CONFIG_NOVA_CONDUCTOR_HOST={{CONFIG_NOVA_CONDUCTOR_HOST}}
+
+# The password to use for the Nova to access DB
+CONFIG_NOVA_DB_PW={{CONFIG_NOVA_DB_PW}}
+
+# The password to use for the Nova to authenticate with Keystone
+CONFIG_NOVA_KS_PW={{CONFIG_NOVA_KS_PW}}
+
+# The IP address of the server on which to install the Nova Scheduler
+# service
+CONFIG_NOVA_SCHED_HOST={{CONFIG_NOVA_SCHED_HOST}}
+
+# The overcommitment ratio for virtual to physical CPUs. Set to 1.0
+# to disable CPU overcommitment
+CONFIG_NOVA_SCHED_CPU_ALLOC_RATIO={{CONFIG_NOVA_SCHED_CPU_ALLOC_RATIO}}
+
+# The overcommitment ratio for virtual to physical RAM. Set to 1.0 to
+# disable RAM overcommitment
+CONFIG_NOVA_SCHED_RAM_ALLOC_RATIO={{CONFIG_NOVA_SCHED_RAM_ALLOC_RATIO}}
+
+# Private interface for Flat DHCP on the Nova compute servers
+CONFIG_NOVA_COMPUTE_PRIVIF={{CONFIG_NOVA_COMPUTE_PRIVIF}}
+
+# The IP address of the server on which to install the Nova Network
+# service
+CONFIG_NOVA_NETWORK_HOSTS={{CONFIG_NOVA_NETWORK_HOSTS}}
+
+# Public interface on the Nova network server
+CONFIG_NOVA_NETWORK_PUBIF={{CONFIG_NOVA_NETWORK_PUBIF}}
+
+# Private interface for Flat DHCP on the Nova network server
+CONFIG_NOVA_NETWORK_PRIVIF={{CONFIG_NOVA_NETWORK_PRIVIF}}
+
+# IP Range for Flat DHCP
+CONFIG_NOVA_NETWORK_FIXEDRANGE={{CONFIG_NOVA_NETWORK_FIXEDRANGE}}
+
+# IP Range for Floating IP's
+CONFIG_NOVA_NETWORK_FLOATRANGE={{CONFIG_NOVA_NETWORK_FLOATRANGE}}
+
+# Name of the default floating pool to which the specified floating
+# ranges are added to
+CONFIG_NOVA_NETWORK_DEFAULTFLOATINGPOOL={{CONFIG_NOVA_NETWORK_DEFAULTFLOATINGPOOL}}
+
+# Automatically assign a floating IP to new instances
+CONFIG_NOVA_NETWORK_AUTOASSIGNFLOATINGIP={{CONFIG_NOVA_NETWORK_AUTOASSIGNFLOATINGIP}}
+
+# The IP addresses of the server on which to install the Quantum
+# server
+CONFIG_QUANTUM_SERVER_HOST={{CONFIG_QUANTUM_SERVER_HOST}}
+
+# Enable network namespaces for Quantum
+CONFIG_QUANTUM_USE_NAMESPACES={{CONFIG_QUANTUM_USE_NAMESPACES}}
+
+# The password to use for Quantum to authenticate with Keystone
+CONFIG_QUANTUM_KS_PW={{CONFIG_QUANTUM_KS_PW}}
+
+# The password to use for Quantum to access DB
+CONFIG_QUANTUM_DB_PW={{CONFIG_QUANTUM_DB_PW}}
+
+# A comma separated list of IP addresses on which to install Quantum
+# L3 agent
+CONFIG_QUANTUM_L3_HOSTS={{CONFIG_QUANTUM_L3_HOSTS}}
+
+# The name of the bridge that the Quantum L3 agent will use for
+# external traffic, or 'provider' if using provider networks
+CONFIG_QUANTUM_L3_EXT_BRIDGE={{CONFIG_QUANTUM_L3_EXT_BRIDGE}}
+
+# A comma separated list of IP addresses on which to install Quantum
+# DHCP agent
+CONFIG_QUANTUM_DHCP_HOSTS={{CONFIG_QUANTUM_DHCP_HOSTS}}
+
+# The name of the L2 plugin to be used with Quantum
+CONFIG_QUANTUM_L2_PLUGIN={{CONFIG_QUANTUM_L2_PLUGIN}}
+
+# A comma separated list of IP addresses on which to install Quantum
+# metadata agent
+CONFIG_QUANTUM_METADATA_HOSTS={{CONFIG_QUANTUM_METADATA_HOSTS}}
+
+# A comma separated list of IP addresses on which to install Quantum
+# metadata agent
+CONFIG_QUANTUM_METADATA_PW={{CONFIG_QUANTUM_METADATA_PW}}
+
+# The type of network to allocate for tenant networks
+CONFIG_QUANTUM_LB_TENANT_NETWORK_TYPE={{CONFIG_QUANTUM_LB_TENANT_NETWORK_TYPE}}
+
+# A comma separated list of VLAN ranges for the Quantum linuxbridge
+# plugin
+CONFIG_QUANTUM_LB_VLAN_RANGES={{CONFIG_QUANTUM_LB_VLAN_RANGES}}
+
+# A comma separated list of interface mappings for the Quantum
+# linuxbridge plugin
+CONFIG_QUANTUM_LB_INTERFACE_MAPPINGS={{CONFIG_QUANTUM_LB_INTERFACE_MAPPINGS}}
+
+# Type of network to allocate for tenant networks
+CONFIG_QUANTUM_OVS_TENANT_NETWORK_TYPE={{CONFIG_QUANTUM_OVS_TENANT_NETWORK_TYPE}}
+
+# A comma separated list of VLAN ranges for the Quantum openvswitch
+# plugin
+CONFIG_QUANTUM_OVS_VLAN_RANGES={{CONFIG_QUANTUM_OVS_VLAN_RANGES}}
+
+# A comma separated list of bridge mappings for the Quantum
+# openvswitch plugin
+CONFIG_QUANTUM_OVS_BRIDGE_MAPPINGS={{CONFIG_QUANTUM_OVS_BRIDGE_MAPPINGS}}
+
+# A comma separated list of colon-separated OVS bridge:interface
+# pairs. The interface will be added to the associated bridge.
+CONFIG_QUANTUM_OVS_BRIDGE_IFACES={{CONFIG_QUANTUM_OVS_BRIDGE_IFACES}}
+
+# A comma separated list of tunnel ranges for the Neutron openvswitch
+# plugin
+CONFIG_QUANTUM_OVS_TUNNEL_RANGES={{CONFIG_QUANTUM_OVS_TUNNEL_RANGES}}
+
+# Override the IP used for GRE tunnels on this hypervisor to the IP
+# found on the specified interface (defaults to the HOST IP)
+CONFIG_QUANTUM_OVS_TUNNEL_IF={{CONFIG_QUANTUM_OVS_TUNNEL_IF}}
+
+# The IP address of the server on which to install the OpenStack
+# client packages. An admin "rc" file will also be installed
+CONFIG_OSCLIENT_HOST={{CONFIG_OSCLIENT_HOST}}
+
+# The IP address of the server on which to install Horizon
+CONFIG_HORIZON_HOST={{CONFIG_HORIZON_HOST}}
+
+# To set up Horizon communication over https set this to "y"
+CONFIG_HORIZON_SSL={{CONFIG_HORIZON_SSL}}
+
+# PEM encoded certificate to be used for ssl on the https server,
+# leave blank if one should be generated, this certificate should not
+# require a passphrase
+CONFIG_SSL_CERT={{CONFIG_SSL_CERT}}
+
+# Keyfile corresponding to the certificate if one was entered
+CONFIG_SSL_KEY={{CONFIG_SSL_KEY}}
+
+# The IP address on which to install the Swift proxy service
+CONFIG_SWIFT_PROXY_HOSTS={{CONFIG_SWIFT_PROXY_HOSTS}}
+
+# The password to use for the Swift to authenticate with Keystone
+CONFIG_SWIFT_KS_PW={{CONFIG_SWIFT_KS_PW}}
+
+# A comma separated list of IP addresses on which to install the
+# Swift Storage services, each entry should take the format
+# <ipaddress>[/dev], for example 127.0.0.1/vdb will install /dev/vdb
+# on 127.0.0.1 as a swift storage device(packstack does not create the
+# filesystem, you must do this first), if /dev is omitted Packstack
+# will create a loopback device for a test setup
+CONFIG_SWIFT_STORAGE_HOSTS={{CONFIG_SWIFT_STORAGE_HOSTS}}
+
+# Number of swift storage zones, this number MUST be no bigger than
+# the number of storage devices configured
+CONFIG_SWIFT_STORAGE_ZONES={{CONFIG_SWIFT_STORAGE_ZONES}}
+
+# Number of swift storage replicas, this number MUST be no bigger
+# than the number of storage zones configured
+CONFIG_SWIFT_STORAGE_REPLICAS={{CONFIG_SWIFT_STORAGE_REPLICAS}}
+
+# FileSystem type for storage nodes
+CONFIG_SWIFT_STORAGE_FSTYPE={{CONFIG_SWIFT_STORAGE_FSTYPE}}
+
+# Whether to provision for demo usage and testing
+CONFIG_PROVISION_DEMO={{CONFIG_PROVISION_DEMO}}
+
+# The CIDR network address for the floating IP subnet
+CONFIG_PROVISION_DEMO_FLOATRANGE={{CONFIG_PROVISION_DEMO_FLOATRANGE}}
+
+# Whether to configure tempest for testing
+CONFIG_PROVISION_TEMPEST={{CONFIG_PROVISION_TEMPEST}}
+
+# The uri of the tempest git repository to use
+CONFIG_PROVISION_TEMPEST_REPO_URI={{CONFIG_PROVISION_TEMPEST_REPO_URI}}
+
+# The revision of the tempest git repository to use
+CONFIG_PROVISION_TEMPEST_REPO_REVISION={{CONFIG_PROVISION_TEMPEST_REPO_REVISION}}
+
+# Whether to configure the ovs external bridge in an all-in-one
+# deployment
+CONFIG_PROVISION_ALL_IN_ONE_OVS_BRIDGE={{CONFIG_PROVISION_ALL_IN_ONE_OVS_BRIDGE}}
+
+# To subscribe each server to EPEL enter "y"
+CONFIG_USE_EPEL={{CONFIG_USE_EPEL}}
+
+# A comma separated list of URLs to any additional yum repositories
+# to install
+CONFIG_REPO={{CONFIG_REPO}}
+
+# To subscribe each server with Red Hat subscription manager, include
+# this with CONFIG_RH_PW
+CONFIG_RH_USER={{CONFIG_RH_USER}}
+
+# To subscribe each server with Red Hat subscription manager, include
+# this with CONFIG_RH_USER
+CONFIG_RH_PW={{CONFIG_RH_PW}}
+
+# To subscribe each server to Red Hat Enterprise Linux 6 Server Beta
+# channel (only needed for Preview versions of RHOS) enter "y"
+CONFIG_RH_BETA_REPO={{CONFIG_RH_BETA_REPO}}
+
+# To subscribe each server with RHN Satellite,fill Satellite's URL
+# here. Note that either satellite's username/password or activation
+# key has to be provided
+CONFIG_SATELLITE_URL={{CONFIG_SATELLITE_URL}}
+
+# Username to access RHN Satellite
+CONFIG_SATELLITE_USER={{CONFIG_SATELLITE_USER}}
+
+# Password to access RHN Satellite
+CONFIG_SATELLITE_PW={{CONFIG_SATELLITE_PW}}
+
+# Activation key for subscription to RHN Satellite
+CONFIG_SATELLITE_AKEY={{CONFIG_SATELLITE_AKEY}}
+
+# Specify a path or URL to a SSL CA certificate to use
+CONFIG_SATELLITE_CACERT={{CONFIG_SATELLITE_CACERT}}
+
+# If required specify the profile name that should be used as an
+# identifier for the system in RHN Satellite
+CONFIG_SATELLITE_PROFILE={{CONFIG_SATELLITE_PROFILE}}
+
+# Comma separated list of flags passed to rhnreg_ks. Valid flags are:
+# novirtinfo, norhnsd, nopackages
+CONFIG_SATELLITE_FLAGS={{CONFIG_SATELLITE_FLAGS}}
+
+# Specify a HTTP proxy to use with RHN Satellite
+CONFIG_SATELLITE_PROXY={{CONFIG_SATELLITE_PROXY}}
+
+# Specify a username to use with an authenticated HTTP proxy
+CONFIG_SATELLITE_PROXY_USER={{CONFIG_SATELLITE_PROXY_USER}}
+
+# Specify a password to use with an authenticated HTTP proxy.
+CONFIG_SATELLITE_PROXY_PW={{CONFIG_SATELLITE_PROXY_PW}}
+
+# The IP address of the server on which to install the Nagios server
+CONFIG_NAGIOS_HOST={{CONFIG_NAGIOS_HOST}}
+
+# The password of the nagiosadmin user on the Nagios server
+CONFIG_NAGIOS_PW={{CONFIG_NAGIOS_PW}}

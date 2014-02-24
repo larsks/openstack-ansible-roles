@@ -1,0 +1,4 @@
+---
+# main.yml for network_controller/defaults
+floatrange: "{{CONFIG_PROVISION_DEMO_FLOATRANGE}}"
+

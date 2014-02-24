@@ -1,0 +1,10 @@
+---
+- name: install packstack
+  yum: name=openstack-packstack state=latest
+- name: generate packstack answers file
+  template: src=packstack-answers.txt dest={{packstack_answers_file}}
+  register: last_run
+- name: deploy openstack using packstack
+  command: chdir=/root packstack --answer-file={{packstack_answers_file}}
+  when: last_run.changed
+

@@ -1,0 +1,5 @@
+---
+- git: repo=https://github.com/openstack/tempest.git
+        dest={{ tempest_dir }}
+        version={{ tempest_branch }}
+

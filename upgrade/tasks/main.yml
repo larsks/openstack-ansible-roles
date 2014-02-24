@@ -1,0 +1,17 @@
+---
+# Perform a full system upgrade.  If a new kernel package is installed,
+# optionally reboot the system if called with reboot: true.
+- command: yum -d1 check-update
+  register: needsupdate
+  ignore_errors: true
+- yum: name=* state=latest
+  when: needsupdate.rc == 100
+  register: update
+- name: rebooting to activate new kernel
+  command: reboot
+  ignore_errors: true
+  when: reboot and update.changed and update.results[0].find('kernel') != -1
+  register: last_run
+- name: wait for reboot to complete
+  local_action: wait_for delay=10 host={{inventory_hostname}} port=22
+

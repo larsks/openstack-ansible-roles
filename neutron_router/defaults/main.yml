@@ -1,0 +1,4 @@
+---
+# main.yml for neutron_router/vars
+neutron_command: neutron
+

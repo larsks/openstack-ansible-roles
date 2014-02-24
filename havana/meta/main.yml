@@ -1,0 +1,5 @@
+---
+# main.yml for rdo-havana/meta
+dependencies:
+  - http_server
+

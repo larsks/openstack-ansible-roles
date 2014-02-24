@@ -1,0 +1,25 @@
+---
+# main.yml for neutron_router/tasks
+- name: check if router {{router_name}} exists
+  shell: . /root/keystonerc_admin; {{neutron_command}} router-show {{router_name}}
+  ignore_errors: true
+  register: router_check
+- name: create router {{router_name}}
+  shell: >
+    . /root/keystonerc_admin;
+    {{neutron_command}} router-create {{router_name}}
+  register: router_create
+  when: router_check|failed
+- name: set gateway on router {{router_name}} to {{router_gateway}}
+  shell: >
+    . /root/keystonerc_admin;
+    {{neutron_command}} router-gateway-set {{router_name}} {{router_gateway}}
+  when: router_create.changed
+- name: add interfaces to router {{router_name}}
+  shell: >
+    . /root/keystonerc_admin;
+    {{neutron_command}} router-interface-add {{router_name}} {{item}}
+  with_items: router_interfaces
+  # this is a hack until failed_when is available (1.4)
+  ignore_errors: true
+

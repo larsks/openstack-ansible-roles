@@ -1,0 +1,8 @@
+---
+# main.yml for rdo-havana-repo/tasks
+- command: rpm -q rdo-release-havana
+  ignore_errors: true
+  register: rdopackage
+- command: yum -d1 -y install {{rdo_repo_url}}
+  when: rdopackage.rc != 0
+

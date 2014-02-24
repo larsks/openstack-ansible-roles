@@ -1,0 +1,13 @@
+- name: check if image {{image_name}} exists
+  shell: . /root/keystonerc_admin; glance image-show {{image_name}}
+  ignore_errors: true
+  register: image_check
+- name: create image {{image_name}} from {{image_url}}
+  shell: >
+    . /root/keystonerc_admin;
+    glance image-create --is-public True --name {{image_name}}
+    --disk-format {{image_disk_format}}
+    --container-format {{image_container_format}}
+    --copy-from {{image_url}}
+  when: image_check.rc == 1
+

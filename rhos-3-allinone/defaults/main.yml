@@ -1,0 +1,4 @@
+---
+packstack_os_install_quantum: n
+packstack_provision_tempest: n
+

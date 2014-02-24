@@ -1,0 +1,3 @@
+tempest_branch: master
+tempest_dir: /var/lib/tempest
+

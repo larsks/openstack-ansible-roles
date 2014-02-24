@@ -1,0 +1,25 @@
+---
+# main.yml for neutron_network/tasks
+- name: check if network {{network_name}} exists
+  shell: . /root/keystonerc_admin; {{neutron_command}} net-show {{network_name}}
+  ignore_errors: true
+  register: net_check
+- name: create network {{network_name}}
+  shell: >
+    . /root/keystonerc_admin;
+    {{neutron_command}} net-create {{network_name}} --
+    {% if network_external is defined and network_external %}--router:external=true{% endif %}
+  register: net_create
+  when: net_check|failed
+- name: create subnets in network {{network_name}}
+  shell: >
+    . /root/keystonerc_admin;
+    {{neutron_command}} subnet-show {{item.name}} ||
+    {{neutron_command}} subnet-create --name={{item.name}}
+    {% if item.dns_server is defined %}--dns-nameserver={{item.dns_server}}{% endif %}
+    {% if item.disable_dhcp is defined and item.disable_dhcp %}--disable-dhcp{% endif %}
+    {% if item.allocation_pool is defined %}--allocation-pool={{item.allocation_pool}}{% endif %}
+    {% if item.tenant_id is defined %}--tenant-id={{item.tenant_id}}{% endif %}
+    {% if item.gateway is defined %}--gateway={{item.gateway}}{% endif %}
+    {{network_name}} {{item.cidr}}
+  with_items: network_subnets

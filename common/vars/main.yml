@@ -1,0 +1,13 @@
+common_repos:
+  - sqlcli
+  - crux
+  - osctl
+common_packages:
+  - yum-plugin-fastestmirror
+  - make
+  - git
+  - strace
+  - screen
+  - vim-enhanced
+  - libvirt-client
+

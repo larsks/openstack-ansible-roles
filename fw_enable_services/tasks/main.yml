@@ -1,0 +1,11 @@
+---
+# main.yml for fw_enable_services/tasks
+#
+
+- name: update running firewall for {{item}}
+  command: firewall-cmd --zone={{rule_zone}} --add-service={{item}}
+  with_items: enabled_fw_services
+- name: update persistent firewall for {{item}}
+  command: firewall-cmd --permanent --zone={{rule_zone}} --add-service={{item}}
+  with_items: enabled_fw_services
+

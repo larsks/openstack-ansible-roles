@@ -1,0 +1,16 @@
+- file: path=/etc/yum.repos.d/gluster.repo state=file
+  ignore_errors: true
+  register: has_repo
+- command: curl -sfL -o /etc/yum.repos.d/gluster.repo
+           http://download.gluster.org/pub/gluster/glusterfs/LATEST/CentOS/glusterfs-epel.repo
+  when: has_repo|failed
+- yum: name={{item}} state=latest
+  with_items:
+    - glusterfs
+    - glusterfs-libs
+    - glusterfs-server
+    - glusterfs-fuse
+- service: name=glusterd state=running enabled=true
+- copy: src=group-virt dest=/var/lib/glusterd/groups/virt
+        owner=root group=root mode=0644
+

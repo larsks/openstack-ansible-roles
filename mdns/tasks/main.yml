@@ -1,0 +1,11 @@
+---
+- yum: name={{item}} state=latest
+  with_items:
+    - dbus
+    - avahi-daemon
+    - nss-mdns
+- service: name={{item}} state=running enabled=true
+  with_items:
+    - avahi-daemon
+    - messagebus
+

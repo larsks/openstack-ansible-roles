@@ -1,0 +1,13 @@
+[{{repo_id}}]
+name={{repo_name|default(repo_id)}}
+{% if repo_baseurl is defined %}baseurl={{repo_baseurl}}
+{% endif %}
+{% if repo_mirrorlist is defined %}mirrorlist={{repo_mirrorlist}}
+{% endif %}
+{% if repo_gpgkey is defined %}gpgkey={{repo_gpgkey}}
+{% endif %}
+{% if repo_priority is defined %}priority={{repo_priority}}
+{% endif %}
+gpgcheck={{repo_gpgcheck}}
+enabled={{repo_enabled}}
+

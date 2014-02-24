@@ -1,0 +1,10 @@
+---
+# main.yml for fw_service/tasks
+- name: add service {{service_name}}
+  template: >
+    src=service.xml dest={{fw_service_dir}}/{{fw_service_prefix}}{{service_name}}.xml
+    owner={{fw_service_owner}} mode=0644
+  register: lastrun
+  notify:
+    - reload firewalld
+ 

@@ -1,0 +1,32 @@
+DEVICE={{ifcfg_device}}
+TYPE={{ifcfg_type}}
+ONBOOT={{ifcfg_onboot|default('yes')}}
+BOOTPROTO={{ifcfg_bootproto|default('none')}}
+NM_CONTROLLED={{ifcfg_nm_controlled|default('no')}}
+
+{% if ifcfg_peerdns  is defined %}PEERDNS={{ifcfg_peerdns}}
+{% endif %}
+{% if ifcfg_defroute  is defined %}DEFROUTE={{ifcfg_defroute}}
+{% endif %}
+{% if ifcfg_hwaddr  is defined %}HWADDR={{ifcfg_hwaddr}}
+{% endif %}
+{% if ifcfg_ipaddr  is defined %}IPADDR={{ifcfg_ipaddr}}
+{% endif %}
+{% if ifcfg_netmask  is defined %}NETMASK={{ifcfg_netmask}}
+{% endif %}
+{% if ifcfg_broadcast  is defined %}BROADCAST={{ifcfg_broadcast}}
+{% endif %}
+{% if ifcfg_gateway  is defined %}GATEWAY={{ifcfg_gateway}}
+{% endif %}
+
+{% if ifcfg_devicetype  is defined %}DEVICETYPE={{ifcfg_devicetype}}
+{% endif %}
+{% if ifcfg_ovs_bridge  is defined %}OVS_BRIDGE={{ifcfg_ovs_bridge}}
+{% endif %}
+
+{% if ifcfg_type == 'Bridge' %}
+# Bridge settings
+{% if ifcfg_delay  is defined %}DELAY={{ifcfg_delay}}
+{% endif %}
+{% endif %}
+

@@ -1,0 +1,5 @@
+---
+# Set to `true` to reboot the target system when a new
+# kernel package is installed as part of an upgrade.
+reboot: false
+

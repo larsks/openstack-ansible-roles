@@ -1,0 +1,5 @@
+---
+# main.yml for yumrepo/vars
+repo_gpgcheck: 0
+repo_enabled: 1
+

@@ -1,0 +1,18 @@
+---
+- yum: name={{item}} state=latest
+  with_items: common_packages
+- name: create /var/lib/repos directory
+  file: path=/var/lib/repos state=directory owner=root mode=0755
+
+- git: repo=git://github.com/larsks/{{item}}
+        dest=/var/lib/repos/{{item}}
+  with_items: common_repos
+- command: make -C /var/lib/repos/{{item}} install
+  with_items: common_repos
+
+- selinux: policy=targeted state={{selinux_state}}
+- service: name=NetworkManager state=stopped
+  ignore_errors: true
+- yum: name=NetworkManager state=absent
+- service: name=network state=running enabled=true
+

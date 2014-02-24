@@ -1,0 +1,10 @@
+---
+- yum: name={{item}} state=latest
+  with_items:
+    - libxml2-devel
+    - libxslt-devel
+    - python-devel
+    - openssl-devel
+    - python-virtualenv
+    - gcc
+

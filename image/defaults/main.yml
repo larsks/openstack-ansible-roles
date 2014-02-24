@@ -1,0 +1,4 @@
+---
+image_disk_format: qcow2
+image_container_format: bare
+

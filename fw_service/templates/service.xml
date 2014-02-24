@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>{{fw_service_prefix}}{{service_name}}</short>
+  <description>{{service_description}}</description>
+{% for port in service_ports %}
+  <port protocol="{{port.protocol}}" port="{{port.port}}"/>
+{% endfor %}
+</service>
+

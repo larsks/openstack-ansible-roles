@@ -1,0 +1,30 @@
+---
+# main.yml for network_controller/tasks
+
+- shell: iptables -S INPUT | grep -q 'fixup quantum incoming'
+  ignore_errors: true
+  register: fwcheck
+- command: >
+    iptables -I INPUT 1 -p tcp --dport 9696 -j ACCEPT 
+    -m comment --comment 'fixup quantum incoming'
+  when: fwcheck.rc != 0
+- shell: iptables -S FORWARD | grep -q 'fixup float forwarding'
+  ignore_errors: true
+  register: fwcheck
+- command: >
+    iptables -I FORWARD 1 -s "{{floatrange}}" -j ACCEPT
+    -m comment --comment 'fixup float forwarding'
+  when: fwcheck.rc != 0
+- command: >
+    iptables -I FORWARD 1 -d "{{floatrange}}" -j ACCEPT
+    -m comment --comment 'fixup float forwarding'
+  when: fwcheck.rc != 0
+- shell: iptables -t nat -S POSTROUTING | grep -q 'fixup float masquerade'
+  ignore_errors: true
+  register: fwcheck
+- command: >
+    iptables -t nat -I POSTROUTING 1 -s "{{floatrange}}" -j MASQUERADE
+    -m comment --comment 'fixup float masquerade'
+  when: fwcheck.rc != 0
+- shell: iptables-save > /etc/sysconfig/iptables
+

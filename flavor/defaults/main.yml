@@ -1,0 +1,4 @@
+---
+# main.yml for flavors/vars
+flavor_id: auto
+

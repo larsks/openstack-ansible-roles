@@ -1,0 +1,16 @@
+- command: gluster volume info {{volume_name}}
+  ignore_errors: true
+  register: vol_exists
+- command: gluster volume create {{volume_name}} replica 2
+           {{volume_brick_0}}
+           {{volume_brick_1}}
+  when: vol_exists|failed
+- command: gluster volume status {{volume_name}}
+  register: vol_status
+  ignore_errors: true
+- command: gluster volume set {{volume_name}} {{item.name}} {{item.value}}
+  with_items: volume_options
+- command: gluster volume start {{volume_name}}
+  when: vol_status|failed
+
+

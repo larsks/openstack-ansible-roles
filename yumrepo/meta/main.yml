@@ -1,0 +1,4 @@
+---
+# main.yml for yumrepo/meta
+allow_duplicates: yes
+

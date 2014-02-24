@@ -1,0 +1,11 @@
+---
+- copy: src=ksutil dest=/bin/ksutil mode=0755
+- shell: . /root/keystonerc_admin; ksutil -u demo:demo:secret1 -u alt_demo:alt_demo:secret2
+- shell: . /root/keystonerc_admin; echo $OS_PASSWORD
+  register: admin_password
+- shell: . /root/keystonerc_admin; glance image-show cirros | awk '$2 == "id" {print $4}'
+  register: cirros_image_id
+- shell: awk -F= '$1 == "sql_connection" {print $2}' /etc/nova/nova.conf
+  register: nova_dburi
+- template: src=tempest.conf dest={{tempest_dir}}/etc/tempest.conf
+

@@ -1,0 +1,4 @@
+---
+# main.yml for neutron_network/vars
+neutron_command: neutron
+

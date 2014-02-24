@@ -1,0 +1,9 @@
+---
+# main.yml for havana/tasks
+- yum: name=openstack-packstack state=latest
+- template: src=packstack-answers.txt dest={{packstack_answers_file}}
+  when: not templateonly
+  register: last_run
+- command: chdir=/root packstack --answer-file={{packstack_answers_file}}
+  when: not templateonly and last_run.changed
+

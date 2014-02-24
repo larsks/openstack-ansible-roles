@@ -1,0 +1,14 @@
+---
+# main.yml for libvirt_is_external/tasks
+- shell: >
+    . /root/keystonerc_admin; 
+    {{neutron_command}} security-group-rule-create
+    --protocol icmp --direction ingress default
+  ignore_errors: true
+- shell: >
+    . /root/keystonerc_admin;
+    {{neutron_command}} security-group-rule-create
+    --protocol tcp --port-range-min 22 --port-range-max 22
+    --direction ingress default
+  ignore_errors: true
+

@@ -1,0 +1,5 @@
+---
+# main.yml for http_server/handlers
+- name: restart httpd
+  service: name=httpd state=restarted
+

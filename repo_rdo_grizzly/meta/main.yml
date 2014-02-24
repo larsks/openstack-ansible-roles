@@ -1,0 +1,8 @@
+---
+# main.yml for repo_rdo_grizzly/meta
+dependencies:
+  - repo_epel
+  - role: remotepkg
+    pkg_url: http://rdo.fedorapeople.org/openstack-grizzly/rdo-release-grizzly.rpm
+    pkg_name: rdo-release
+

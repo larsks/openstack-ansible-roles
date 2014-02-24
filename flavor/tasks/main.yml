@@ -1,0 +1,14 @@
+---
+# main.yml for flavors/tasks
+
+- name: check if flavor {{flavor_name}} exists
+  shell: . /root/keystonerc_admin; nova flavor-show {{flavor_name}}
+  ignore_errors: true
+  register: flavor_check
+- name: create flavor {{flavor_name}}
+  shell: >
+    . /root/keystonerc_admin;
+    nova flavor-create {{flavor_name}} {{flavor_id}}
+    {{flavor_ram}} {{flavor_disk}} {{flavor_cpu}}
+  when: flavor_check.rc == 1
+

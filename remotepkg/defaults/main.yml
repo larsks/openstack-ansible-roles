@@ -1,0 +1,4 @@
+---
+# main.yml for remotepkg/defaults
+force_package_install: false
+

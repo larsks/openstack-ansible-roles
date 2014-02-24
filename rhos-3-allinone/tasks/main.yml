@@ -1,0 +1,7 @@
+---
+- shell: ls -l packstack-answers-*
+  register: answers
+  ignore_errors: true
+- command: chdir=/root packstack --allinone --os-quantum-install={{ packstack_os_install_quantum }} --provision-tempest={{ packstack_provision_tempest }}
+  when: answers.rc != 0
+

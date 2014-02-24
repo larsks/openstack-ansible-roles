@@ -1,0 +1,8 @@
+---
+# main.yml for repo_epel/meta
+dependencies:
+  - role: remotepkg
+    pkg_url: http://mirror.cogentco.com/pub/linux/epel/6/i386/epel-release-6-8.noarch.rpm
+    pkg_name: epel-release
+    when: ansible_distribution == 'RedHat'
+
