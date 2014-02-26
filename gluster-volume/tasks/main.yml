@@ -1,9 +1,9 @@
 - command: gluster volume info {{volume_name}}
   ignore_errors: true
   register: vol_exists
-- command: gluster volume create {{volume_name}} replica 2
-           {{volume_brick_0}}
-           {{volume_brick_1}}
+- command: gluster volume create {{volume_name}}
+           replica {{volume_replicas|default(volume_bricks|length)}}
+           {{volume_bricks|join(' ')}}
   when: vol_exists|failed
 - command: gluster volume status {{volume_name}}
   register: vol_status
