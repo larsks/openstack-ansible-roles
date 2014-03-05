@@ -1,0 +1,28 @@
+#!/bin/sh
+
+roledir=$(dirname $0)
+
+answers_file=$1
+answers_file_dir=$(cd $(dirname $answers_file) && pwd)
+answer_file="$answers_file_dir/${answers_file##*/}"
+
+tmpfile=$(mktemp /tmp/answersXXXXXX)
+trap "rm -f $tmpfile" EXIT
+
+egrep -v '^\[|^$|^#' $answer_file > $tmpfile
+. $tmpfile
+
+echo "building new defaults"
+sed 's/=\(.*\)/: "\1"/' $tmpfile |
+sed '
+	/_KEYSTONE_ADMIN_TOKEN:/ s/".*/"super-secret-token"/
+	/_PW:/ s/".*/"secret"/
+	/_PASSWORD:/ s/".*/"secret"/
+	/_SECRET:/ s/".*/"secret"/
+' |
+sed "s/$CONFIG_QPID_HOST/{{ansible_default_ipv4.address}}/g" > $roledir/defaults/main.yml
+
+echo "building new template"
+sed '/^[A-Z]/ s/\(.*\)=.*/\1="{{\1}}"/' $answer_file > $roledir/templates/packstack-answers.txt
+
+
