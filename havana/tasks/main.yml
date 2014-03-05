@@ -4,5 +4,5 @@
 - template: src=packstack-answers.txt dest={{packstack_answers_file}}
   register: last_run
 - command: chdir=/root packstack --answer-file={{packstack_answers_file}}
-  when: not templateonly and last_run.changed
+  when: not packstack_templateonly and last_run.changed
 

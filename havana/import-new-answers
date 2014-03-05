@@ -22,6 +22,11 @@ sed '
 ' |
 sed "s/$CONFIG_QPID_HOST/{{ansible_default_ipv4.address}}/g" > $roledir/defaults/main.yml
 
+cat >> $roledir/defaults/main.yml <<EOF
+packstack_answers_file: "/root/packstack-answers.txt"
+packstack_templateonly: false
+EOF
+
 echo "building new template"
 sed '/^[A-Z]/ s/\(.*\)=.*/\1="{{\1}}"/' $answer_file > $roledir/templates/packstack-answers.txt
 
