@@ -140,3 +140,5 @@ CONFIG_SATELLITE_FLAGS: ""
 CONFIG_SATELLITE_PROXY: ""
 CONFIG_SATELLITE_PROXY_USER: ""
 CONFIG_SATELLITE_PROXY_PW: "secret"
+packstack_answers_file: "/root/packstack-answers.txt"
+packstack_templateonly: false

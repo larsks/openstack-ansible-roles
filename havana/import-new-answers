@@ -28,6 +28,6 @@ packstack_templateonly: false
 EOF
 
 echo "building new template"
-sed '/^[A-Z]/ s/\(.*\)=.*/\1="{{\1}}"/' $answer_file > $roledir/templates/packstack-answers.txt
+sed '/^[A-Z]/ s/\(.*\)=.*/\1={{\1}}/' $answer_file > $roledir/templates/packstack-answers.txt
 
 
